@@ -66,7 +66,7 @@ def get_workout(id):
     else:
         return jsonify({"error": "Workout not found"}), 404
 
-@app.route('/members/<int:id>', methods=['POST'])
+@app.route('/members/<int:id>', methods=['PUT'])
 def update_member(id):
     member = Member.query.get_or_404(id)
     try:
@@ -103,7 +103,7 @@ def get_member_workouts(id):
     member = Member.query.get_or_404(id)
     return workouts_schema.jsonify(member.workouts)
 
-@app.route('/workouts/<int:id>/workouts', methods=['POST'])
+@app.route('/workouts/<int:id>/workouts', methods=['PUT'])
 def update_workout(id):
     workout = Workout.query.get_or_404(id)
     try:
